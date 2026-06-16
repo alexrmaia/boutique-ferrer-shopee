@@ -359,17 +359,32 @@ if st.session_state["aba"] == "financeiro":
     _dmax = df["Data"].max().date() if pd.notna(df["Data"].max()) else _date.today()
 
     st.markdown('<div class="card" style="padding:16px 24px;margin-bottom:12px;">', unsafe_allow_html=True)
-    fc1, fc2, fc3 = st.columns([2, 2, 1])
-    with fc1:
-        data_ini = st.date_input("📅 Data inicial", value=_dmin, min_value=_dmin, max_value=_dmax, key="fi_ini")
-    with fc2:
-        data_fim = st.date_input("📅 Data final",   value=_dmax, min_value=_dmin, max_value=_dmax, key="fi_fim")
-    with fc3:
-        st.markdown("<br>", unsafe_allow_html=True)
-        if st.button("↺ Resetar período", use_container_width=True):
-            st.session_state["fi_ini"] = _dmin
-            st.session_state["fi_fim"] = _dmax
-            st.rerun()
+    fp1, fp2, fp3 = st.columns([2, 2, 2])
+    with fp1:
+        periodo_sel = st.selectbox("Período", ["Hoje","7 dias","15 dias","30 dias","Personalizar"], index=3, key="periodo_sel")
+    # Calcular datas conforme seleção
+    if periodo_sel == "Hoje":
+        data_ini = _dmax
+        data_fim = _dmax
+    elif periodo_sel == "7 dias":
+        data_ini = max(_dmin, _dmax - pd.Timedelta(days=6).to_pytimedelta().days.__class__(_dmax - _date.fromordinal(_dmax.toordinal() - 6)))
+        data_ini = _date.fromordinal(max(_dmin.toordinal(), _dmax.toordinal() - 6))
+        data_fim = _dmax
+    elif periodo_sel == "15 dias":
+        data_ini = _date.fromordinal(max(_dmin.toordinal(), _dmax.toordinal() - 14))
+        data_fim = _dmax
+    elif periodo_sel == "30 dias":
+        data_ini = _date.fromordinal(max(_dmin.toordinal(), _dmax.toordinal() - 29))
+        data_fim = _dmax
+    else:
+        with fp2:
+            data_ini = st.date_input("Data inicial", value=_dmin, min_value=_dmin, max_value=_dmax, key="fi_ini")
+        with fp3:
+            data_fim = st.date_input("Data final",   value=_dmax, min_value=_dmin, max_value=_dmax, key="fi_fim")
+        if data_ini > data_fim:
+            st.warning("Data inicial não pode ser maior que a data final.")
+            data_ini = _dmin
+            data_fim = _dmax
     st.markdown("</div>", unsafe_allow_html=True)
 
     # Aplica filtro
