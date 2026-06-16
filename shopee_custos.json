@@ -1,0 +1,51 @@
+{
+  "Polo Lisa Preta": {
+    "custo_unitario": 7.7,
+    "embalagem": 0.0,
+    "outros": 0.0,
+    "margem_alvo": 0.0,
+    "observacao": ""
+  },
+  "Polo Lisa Branca": {
+    "custo_unitario": 7.7,
+    "embalagem": 0.0,
+    "outros": 0.0,
+    "margem_alvo": 0.0,
+    "observacao": ""
+  },
+  "Polo Lisa Marrom": {
+    "custo_unitario": 7.7,
+    "embalagem": 0.0,
+    "outros": 0.0,
+    "margem_alvo": 0.0,
+    "observacao": ""
+  },
+  "Polo Bicolor Preto/Branco": {
+    "custo_unitario": 7.7,
+    "embalagem": 0.0,
+    "outros": 0.0,
+    "margem_alvo": 0.0,
+    "observacao": ""
+  },
+  "Polo Bicolor Marrom/Branco": {
+    "custo_unitario": 7.7,
+    "embalagem": 0.0,
+    "outros": 0.0,
+    "margem_alvo": 0.0,
+    "observacao": ""
+  },
+  "Polo Bicolor Branco/Marrom": {
+    "custo_unitario": 7.7,
+    "embalagem": 0.0,
+    "outros": 0.0,
+    "margem_alvo": 0.0,
+    "observacao": ""
+  },
+  "Polo Bicolor Branco/Preto": {
+    "custo_unitario": 7.7,
+    "embalagem": 0.0,
+    "outros": 0.0,
+    "margem_alvo": 0.0,
+    "observacao": ""
+  }
+}
